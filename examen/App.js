@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import ImagenScreen from './Screens/ImagenScreen';
 
 export default function App() {
+
+
   return (
-    <View style={styles.container}>
-      <Text>Hola Mundo</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImagenScreen></ImagenScreen>
+
   );
 }
 
