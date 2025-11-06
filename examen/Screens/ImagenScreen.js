@@ -10,15 +10,17 @@ const [Contador,setContador]=useState(0);
     <View style={styles.container}>
 
       <Text style={styles.texto}> MI GALERIA </Text>
-          <Text style={styles.texto2}> {Contador} </Text>
+        
 
-          <View style={styles.botonesContainer} >
+    <View style={styles.botonesContainer} >
+        
     <Button color= "blue" title='Imagen 1' onPress={()=>setContador(Contador)}/>
-    <Button color= "blue"title='Imagen 2' onPress={()=>setContador(Contador)}/>
+    <Button color= "blue" title='Imagen 2' onPress={()=>setContador(Contador)}/>
     <Button color= "blue" title='Imagen 3' onPress={()=>setContador(Contador)}/>
     <Button color= "blue" title='Imagen 4' onPress={()=>setContador(Contador)}/>
     <Button color= "blue" title='Imagen 5' onPress={()=>setContador(Contador)}/>
     <Button color= "blue" title='Imagen 6' onPress={()=>setContador(Contador)}/>
+    
 
 </View>
 
@@ -43,16 +45,6 @@ texto:{
   fontWeight: "Bold",
   fontStyle: 'italic',
   
-
-},
-
-texto2:{ 
-  color: '#ff0000ff', 
-  fontSize: 35, 
-  fontFamily: 'Courier',
-  fontWeight: 700,
-  fontStyle: 'italic',
-  textDecorationLine: 'underline',
 
 },
 

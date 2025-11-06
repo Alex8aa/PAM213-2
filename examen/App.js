@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import ImagenScreen from './Screens/ImagenScreen';
+import ImagenScreen from './Screens/ImagenScreen.js';
 
 export default function App() {
 
