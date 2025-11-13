@@ -1,14 +1,15 @@
+import { Modal, Text, StyleSheet, View, TouchableOpacity, Switch, TextInput, Alert, Platform } from 'react-native'
 import React, { useState } from 'react'
-import { Text, View,Modal,StyleSheet,TouchableOpacity, Switch, TextInput, Alert,Platform } from 'react-native'
 
 export default function ModalScreen() {
-  
-  const [modalVisible,setModalVisible] = useState(false);
+
+  const [modalVisible, setModalVisible] = useState(false)
   const [descripcion,setDescripcion] = useState('');
-  const [numFav,setNumFav] = useState('');
-  const [gasto,setGasto] = useState(true);
+  const [monto,setMonto] = useState('');
+  const [gasto, setGasto] = useState(true);
+
   const botonGuardar = () => {
-        if (!descripcion || !numFav) {
+        if (!descripcion || !monto) {
           if (Platform.OS === "web") {
             alert('Error: Por favor completa todos los campos')
           } else {
@@ -17,59 +18,65 @@ export default function ModalScreen() {
             return;
         }
         if (Platform.OS === 'web') {
-            alert('Exito' + ` Prueba Realizada, Nombre: ${descripcion} y Numero favorito: ${numFav}`); 
+            alert('Exito' + ` Prueba Realizada, Nombre: ${descripcion} y Numero favorito: ${monto}`); 
         } else {
-            Alert.alert('Exito',`Prueba Realizada, Nombre: ${descripcion} y Numero favorito: ${numFav}`);
+            Alert.alert('Exito',`Prueba Realizada, Nombre: ${descripcion} y Numero favorito: ${monto}`);
         }
         
         botonCerrar();
     }
-
-  const botonCerrar = ()=>{ 
-     setModalVisible(false);
-     setDescripcion(''); 
-     setGasto(true);
-     setNumFav(true);
-  }  
+  const botonCerrar = () => {setModalVisible(false); setDescripcion(''); setMonto(''); setGasto(true);};
+    
   return (
-    <View>
-      <TouchableOpacity style={styles.botonMostrar} onPress={()=> setModalVisible(true)}>
-         <Text style={styles.botonMostrarTexto}>Mostrar Modal</Text>
-      </TouchableOpacity>   
-      
-      <Modal animationType ="slide" visible={modalVisible} transparent={true} onRequestClse={botonCerrar} >
+
+    <View style={styles.container}>
+
+      <TouchableOpacity style={styles.botonMostrar} onPress={() => setModalVisible(true)}>
+        <Text style={styles.botonMostrarTexto}>Mostrar Modal</Text>
+      </TouchableOpacity>
+
+      <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={botonCerrar}>
+        
         <View style={styles.modalContenedor}>
-           <View style={styles.modalVista}>
-              <View style={styles.modalTitulo}>Prueba de Modal</View>
-              
-              <TextInput style={styles.modalInput} placeholder='Escribe tu nombre' placeholderTextColor="#888" value={descripcion} onChangeText={setDescripcion}/>
-              <TextInput style={styles.modalInput} placeholder='Escribe tu número favorito' keyboardType='numeric' placeholderTextColor="#888" value={numFav} onChangeText={setNumFav}/>
+          
+          <View style={styles.modalVista}>
             
-              <View style={styles.switchContenedor}>
-              <Text style={[styles.switchTexto, !gasto && styles.switchTextoActivoVerde]}>Activo</Text>
-              <Switch trackColor={{false:'#DCFCE7', true: '#FEE2E2'}} thumbColor={gasto ? '#EF4444' : '#22C55E'} onValueChange={()=> setGasto(!gasto)} value={gasto}/>
-              <Text style={[styles.switchTexto, !gasto && styles.switchTextoActivoRojo]}>Inactivo</Text>
-              </View>  
+            <Text style={styles.modalTitulo}>Prueba de Modal</Text>
 
-              <View style={styles.modalBotones}>
-                   
-                   <TouchableOpacity style={[styles.botonBase,styles.botonCancelar]} onPress={botonCerrar}>
-                   <Text style={styles.botonCancelarTexto}>Cancelar</Text>
-                   </TouchableOpacity>
+            <TextInput style={styles.modalInput} placeholder="Escribe tu Nombre" placeholderTextColor="#888" value={descripcion} onChangeText={setDescripcion}/>
+            <TextInput style={styles.modalInput} placeholder="Escribe tu Numero Favorito" placeholderTextColor="#888" keyboardType="numeric" value={monto} onChangeText={setMonto}/>
 
-                   <TouchableOpacity style={[styles.botonBase,styles.botonGuardar]} onPress={botonGuardar}>
-                   <Text style={styles.botonGuardarTexto}>Guardar</Text>
-                   </TouchableOpacity>
+            <View style={styles.switchContenedor}>
+              
+              <Text style={[ styles.switchTexto, !gasto && styles.switchTextoActivoVerde]}>Activo</Text>
+              
+              <Switch trackColor={{ false: '#DCFCE7', true: '#FEE2E2' }} thumbColor={gasto ? '#EF4444' : '#22C55E'} onValueChange={() => setGasto(!gasto)} value={gasto}/>
+              
+              <Text style={[styles.switchTexto, gasto && styles.switchTextoActivoRojo]}>Inactivo</Text>
+                
+            </View>
 
-              </View>
-           </View>
+            <View style={styles.modalBotones}>
+              
+              <TouchableOpacity style={[styles.botonBase, styles.botonCancelar]} onPress={botonCerrar}>
+                <Text style={styles.botonCancelarTexto}>Cancelar</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={[styles.botonBase, styles.botonGuardar]} onPress={botonGuardar}>
+                <Text style={styles.botonGuardarTexto}>Guardar</Text>
+              </TouchableOpacity>
+
+            </View>
+
+          </View>
+
         </View>
+
       </Modal>
-      
+
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container:{
@@ -183,6 +190,6 @@ const styles = StyleSheet.create({
   botonCancelarTexto: {
     color: '#374151', 
     fontWeight: 'bold',
-    fontSize: 16,
-  },
-});
+    fontSize: 16,
+  },
+})
