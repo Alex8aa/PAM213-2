@@ -4,12 +4,12 @@ import ContadorScreen from './ContadorScreen.js'
 import BotonesScreen from './BotonesScreen.js'
 import ActScreen from './ActScreen.js'
 import FlatlistScreen from './FlatlistScreen.js'
-import ImageScreen from './ImageScreen.js'
+//import ImageScreen from './ImageScreen.js'
 import ModalScreen from './ModalScreen.js'
 import ScrollScreen from './ScrollScreen.js'
 import SlapshScreen from './SlapshScreen.js'
 import TextScreen from './TextScreen.js'
-import RepasoScreen from './RepasoScreen.js'
+//import RepasoScreen from './RepasoScreen.js'
 
 
 
