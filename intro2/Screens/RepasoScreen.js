@@ -6,7 +6,7 @@ export default function RegistroUsuario() {
   const [correo, setCorreo] = useState('');
   const [aceptaTerminos, setAceptaTerminos] = useState(false);
 
-  const MAIN_IMAGE= require ('../assets/Recursos/Imagen_repaso.png');
+  const MAIN_IMAGE= require ('../assets/Recursos/image_1.png');
 
   
 

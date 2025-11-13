@@ -1,11 +1,11 @@
 import{ Text, StyleSheet, View, Image, TouchableOpacity, StatusBar, ImageBackground} from 'react-native'
 import React, {useEffect, useState} from 'react';
 
-const SPLASH_IMAGE= require ('../assets/Recursos/IMAGEN_1.jpg');
-const MAIN_IMAGE= require ('../assets/Recursos/IMAGEN_2.jpg');
-const LOGO_IMAGE= require ('../assets/Recursos/IMAGEN_3.jpg')
+const SPLASH_IMAGE= require ('../assets/Recursos/image_1.png');
+const MAIN_IMAGE= require ('../assets/Recursos/image_2.png');
+const LOGO_IMAGE= require ('../assets/Recursos/image_3.png');
 
-export default function ImageBackgroungScreen(){
+export default function ImageScreen(){
 
     const [isLoading, setIsLoading]= useState(true);
 
