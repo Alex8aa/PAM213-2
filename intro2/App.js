@@ -1,4 +1,5 @@
 //1.-Imports: Zona de importaciones
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MenuScreen from './Screens/MenuScreen';
@@ -7,7 +8,9 @@ export default function App() {
 
 
   return (
+    <GestureHandlerRootView style={{flex:1}}> 
     <MenuScreen></MenuScreen>
+    </GestureHandlerRootView>
 
   );
 }

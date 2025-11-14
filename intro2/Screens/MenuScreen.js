@@ -7,7 +7,7 @@ import FlatlistScreen from './FlatlistScreen.js'
 import ImageScreen from './ImageScreen.js'
 import ModalScreen from './ModalScreen.js'
 import ScrollScreen from './ScrollScreen.js'
-import SlapshScreen from './SlapshScreen.js'
+import BottomScreen from './BottomScreen.js'
 import TextScreen from './TextScreen.js'
 import RepasoScreen from './RepasoScreen.js'
 
@@ -30,8 +30,8 @@ switch(screen){
                case 'image':
             return <ImageScreen/>
 
-               case 'slapsh':
-            return <SlapshScreen/>
+               case 'bottom':
+            return <BottomScreen/>
 
                case 'scroll':
             return <ScrollScreen/>
@@ -61,12 +61,11 @@ switch(screen){
         <Button title= 'Pract:Buttons' color='blue' onPress={()=>setScreen('botones')}/>
         <Button title= 'Pract: Text' color='green' onPress={()=>setScreen('text')}/>
         <Button title= 'Pract:Image Back' color='orange' onPress={()=>setScreen('image')}/>
-        <Button title= 'Pract:Slapsh' color='purple' onPress={()=>setScreen('slapsh')}/>
+        <Button title= 'Pract:BottomSheet' color='purple' onPress={()=>setScreen('bottom')}/>
         <Button title= 'Pract:Scroll' color='brown' onPress={()=>setScreen('scroll')}/>
         <Button title= 'Pract: Act Indicator' color='black' onPress={()=>setScreen('act')}/>
         <Button title= 'Pract:FlatList'color='orange' onPress={()=>setScreen('flatlist')}/>
         <Button title= 'Pract:Modal' color='grey' onPress={()=>setScreen('modal')}/>
-        <Button title= 'Pract: Bottom' color='blue' onPress={()=>setScreen('bottom')}/>
          <Button title= 'Repaso' color='red' onPress={()=>setScreen('repaso')}/>
                                 
       </View>
