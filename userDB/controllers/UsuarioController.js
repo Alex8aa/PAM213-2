@@ -6,12 +6,12 @@ export class UsuarioController {
     this.listeners = [];
   }
 
-  // Inicializar el controlador con el Service
+  
   async initialize() {
     await DatabaseService.initialize();
   }
 
-  // Obtener usuarios desde la base de datos
+  
   async obtenerUsuarios() {
     try {
       const data = await DatabaseService.getAll();
@@ -22,19 +22,19 @@ export class UsuarioController {
     }
   }
 
-  // Crear un nuevo usuario
+
   async crearUsuario(nombre) {
     try {
-      // 1. Validar datos
+      
       Usuario.validar(nombre);
 
-      // 2. Insertar en BD
+    
       const nuevoUsuario = await DatabaseService.add(nombre.trim());
 
-      // 3. Notificar a los observadores
+      
       this.notifyListeners();
 
-      // 4. Retornar usuario creado
+      
       return new Usuario(
         nuevoUsuario.id,
         nuevoUsuario.nombre,
@@ -46,7 +46,7 @@ export class UsuarioController {
     }
   }
 
-  // Sistema de observadores para actualizar la vista automáticamente
+  
   addListener(callback) {
     this.listeners.push(callback);
   }
