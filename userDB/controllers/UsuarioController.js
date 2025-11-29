@@ -6,12 +6,10 @@ export class UsuarioController {
     this.listeners = [];
   }
 
-  
   async initialize() {
     await DatabaseService.initialize();
   }
 
-  
   async obtenerUsuarios() {
     try {
       const data = await DatabaseService.getAll();
@@ -22,19 +20,14 @@ export class UsuarioController {
     }
   }
 
-
   async crearUsuario(nombre) {
     try {
-      
       Usuario.validar(nombre);
 
-    
       const nuevoUsuario = await DatabaseService.add(nombre.trim());
 
-      
       this.notifyListeners();
 
-      
       return new Usuario(
         nuevoUsuario.id,
         nuevoUsuario.nombre,
@@ -46,16 +39,38 @@ export class UsuarioController {
     }
   }
 
-  
+  // --- NUEVAS FUNCIONES AGREGADAS PARA PRÁCTICA 20 ---
+
+  async actualizarUsuario(id, nombre) {
+    try {
+      Usuario.validar(nombre);
+      await DatabaseService.update(id, nombre.trim());
+      this.notifyListeners();
+    } catch (error) {
+      console.error('Error al actualizar:', error);
+      throw error;
+    }
+  }
+
+  async eliminarUsuario(id) {
+    try {
+      await DatabaseService.delete(id);
+      this.notifyListeners();
+    } catch (error) {
+      console.error('Error al eliminar:', error);
+      throw new Error('No se pudo eliminar el usuario');
+    }
+  }
+
   addListener(callback) {
     this.listeners.push(callback);
   }
 
   removeListener(callback) {
-    this.listeners = this.listeners.filter(fn => fn !== callback);
+    this.listeners = this.listeners.filter(l => l !== callback);
   }
 
   notifyListeners() {
-    this.listeners.forEach(fn => fn());
-  }
+    this.listeners.forEach(callback => callback());
+  }
 }

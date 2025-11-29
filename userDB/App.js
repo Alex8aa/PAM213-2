@@ -1,18 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import UsuarioView from './Screens/InsertUsuarioScreen';
+import React from 'react';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+
+// IMPORTANTE: Aquí buscamos tu archivo dentro de la carpeta 'screens'
+import UsuarioView from './Screens/InsertUsuarioScreen'; 
 
 export default function App() {
   return (
-    <UsuarioView></UsuarioView>
+    <SafeAreaView style={styles.container}>
+      {/* Mostramos tu pantalla de usuarios */}
+      <UsuarioView /> 
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: '#f5f5f5',
+  },
 });

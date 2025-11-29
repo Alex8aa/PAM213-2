@@ -39,7 +39,7 @@ class DatabaseService {
       const nuevoUsuario = {
         id: Date.now(),
         nombre,
-        fecha_creacion: new Date().toISOString(),
+        fecha_creacion: new Date().toISOString()
       };
 
       usuarios.unshift(nuevoUsuario);
@@ -55,10 +55,47 @@ class DatabaseService {
       return {
         id: result.lastInsertRowId,
         nombre,
-        fecha_creacion: new Date().toISOString(),
+        fecha_creacion: new Date().toISOString()
       };
+    }
+  }
+
+  // --- NUEVAS FUNCIONES PARA LA PRÁCTICA 20 ---
+
+  // UPDATE - Actualizar usuario
+  async update(id, nuevoNombre) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const index = usuarios.findIndex(u => u.id === id);
+      if (index !== -1) {
+        usuarios[index].nombre = nuevoNombre;
+        localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+      }
+    } else {
+      // Usamos UPDATE de SQL
+      await this.db.runAsync(
+        'UPDATE usuarios SET nombre = ? WHERE id = ?',
+        nuevoNombre, id
+      );
+    }
+  }
+
+  // DELETE - Eliminar usuario
+  async delete(id) {
+    if (Platform.OS === 'web') {
+      let usuarios = await this.getAll();
+      // Filtramos para quitar el ID que queremos borrar
+      usuarios = usuarios.filter(u => u.id !== id);
+      localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+    } else {
+      // Usamos DELETE de SQL
+      await this.db.runAsync(
+        'DELETE FROM usuarios WHERE id = ?',
+        id
+      );
     }
   }
 }
 
+// Exportar instancia de la clase
 export default new DatabaseService();
