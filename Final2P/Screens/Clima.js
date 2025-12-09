@@ -8,14 +8,14 @@ import {
   TouchableOpacity, 
   Alert 
 } from 'react-native';
+
 const fondo= require('../assets/Recursos/ej1.png')
 
 const images = [
   {
     id: 1,
     title: "Ciudad de Mexico",
-    //temp: "17 °C",
-    desc: "Nublado: 17°C ",
+    desc: "Nublado: 17°C  ☁️",
     details: "Ciudad de Mexico: El clima se encuentra particularmente frio, el cielo nublado y con probabilidad de lluvia",
     img: require('../assets/Recursos/ft1.png'),
   },
@@ -23,8 +23,7 @@ const images = [
   {
     id: 2,
     title: "Ciudad de Queretaro",
-    //temp: "22°C",
-    desc: "Soleado: 22°C",
+    desc: "Soleado: 22°C  ☀️",
     details: "Ciudad de Queretaro: El clima esta caluroso con toques soleados",
     img: require('../assets/Recursos/ft2.png'),
   },
@@ -32,8 +31,7 @@ const images = [
   {
     id: 3,
     title: "Ciudad Marques",
-    //temp: "14 °C",
-    desc: "Frio : 14°C",
+    desc: "Frio : 14°C  ❄️",
     details: "Ciudad Marques:  El clima se encuentra casi helado ",
     img: require('../assets/Recursos/ft3.png'),
   },
@@ -41,8 +39,7 @@ const images = [
   {
     id: 4,
     title: "Ciudad Costera",
-    //temp:"29 °C",
-    desc: "Caluroso:  29° C",
+    desc: "Caluroso:  29° C  ☀️",
     details: "Ciudad Costera:  El clima de ciudad costera está casi veraniego",
     img: require('../assets/Recursos/ft4.png'),
   },
@@ -61,15 +58,12 @@ export default function Clima() {
   };
 
   return (
-
-     <ImageBackground
-        source={fondo}
-          style={styles.background}
-    
-        >
+     <ImageBackground source={fondo} style={styles.background}>
     
     <ScrollView style={styles.container}>
-      <Text style={styles.mainTitle}>Clima Actual       19:25 hrs</Text>
+      <Text style={styles.mainTitle}>Clima Actual</Text>
+      <Text style={styles.mainTitle}> 19:25 hrs</Text>
+
 
       {images.map((item) => (
         <View key={item.id} style={styles.card}>
